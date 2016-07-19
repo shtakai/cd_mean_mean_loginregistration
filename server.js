@@ -21,30 +21,33 @@ app.use(express.static(path.join(__dirname, './bower_components')))
 require('./server/config/connection.js')
 
 // load router
-const mongoose = require('mongoose')
-app.get('/', (req, res) => {
-  const User = mongoose.model('User')
-  let user = new User()
-  user.first_name = faker.commerce.productName()
-  user.last_name = faker.commerce.productName()
-  user.email = faker.internet.email()
-  user.password = 'testtest'
-
-  console.log('user', user)
-  user.save((err, _user) => {
-    if(err){ res.json(err) }
-    else{
-     console.log('saved', _user)
-     console.log('check password')
-     _user.comparePassword('testtest', (data) => {
-     })
-      res.json({test:'test'})
-
-    }
-  })
 
 
-  })
+
+
+
+//const mongoose = require('mongoose')
+//app.get('/', (req, res) => {
+  //const User = mongoose.model('User')
+  //let user = new User()
+  //user.first_name = faker.commerce.productName()
+  //user.last_name = faker.commerce.productName()
+  //user.email = faker.internet.email()
+  //user.password = 'testtest'
+
+  //console.log('user', user)
+  //user.save((err, _user) => {
+    //if(err){ res.json(err) }
+    //else{
+      //console.log('saved', _user)
+      //console.log('check password')
+      //_user.comparePassword('testtest', (data) => {
+      //})
+      //res.json({test:'test'})
+
+    //}
+  //})
+//})
 
 
 // start server
