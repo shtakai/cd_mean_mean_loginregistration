@@ -1,1 +1,20 @@
 <h2>Login</h2>
+<div>
+  <form ng-submit="c.login()" >
+    <div>
+      <p><span ng-bind="c.email"></span> / <span ng-bind="c.password"></span></p>
+    </div>
+    <div>
+      <label for="email" >Email</label>
+      <input type="text" ng-model="c.email" id="id" >
+    </div>
+    <div>
+      <label for="password" >Password</label>
+      <input type="password" ng-model="c.password" id="id" >
+    </div>
+    <div>
+      <input type="submit" value="LOGIN">
+    </div>
+  </form>
+
+</div>
