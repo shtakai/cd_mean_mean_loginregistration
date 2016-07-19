@@ -3,6 +3,9 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const faker = require('faker')
+const session = require('express-session')
+const secret = process.env.SESS_SECRET || faker.random.uuid()
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -16,6 +19,20 @@ app.use(bodyParser.json())
 // static
 app.use(express.static(path.join(__dirname, './static')))
 app.use(express.static(path.join(__dirname, './bower_components')))
+
+// session
+//
+let sess = {
+  secret: secret,
+  cookie: {}
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
 
 // load mongoose connector
 require('./server/config/connection.js')
