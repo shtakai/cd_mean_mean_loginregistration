@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 // static
-app.use(express.static(path.join(__dirname, './static')))
+app.use(express.static(path.join(__dirname, './client')))
 app.use(express.static(path.join(__dirname, './bower_components')))
 
 // session
