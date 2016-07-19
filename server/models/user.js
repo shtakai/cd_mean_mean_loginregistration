@@ -41,6 +41,15 @@ let UserSchema = new Schema(
   }
 )
 
+
+UserSchema.methods.comparePassword = function(candidatePassword, callback) {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) return callback(err);
+        console.log('isMatch', isMatch)
+        callback(null, isMatch);
+    });
+};
+
 UserSchema.pre('save', function(done) {
   console.log('pre save')
   let user = this;

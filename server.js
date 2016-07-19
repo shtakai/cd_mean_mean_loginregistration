@@ -28,13 +28,16 @@ app.get('/', (req, res) => {
   user.first_name = faker.commerce.productName()
   user.last_name = faker.commerce.productName()
   user.email = faker.internet.email()
-  user.password = faker.internet.password()
+  user.password = 'testtest'
 
   console.log('user', user)
   user.save((err, _user) => {
     if(err){ res.json(err) }
     else{
      console.log('saved', _user)
+     console.log('check password')
+     _user.comparePassword('testtest', (data) => {
+     })
       res.json({test:'test'})
 
     }
