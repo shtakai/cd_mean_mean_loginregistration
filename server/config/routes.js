@@ -3,8 +3,12 @@ console.log('router')
 const mongoose = require('mongoose')
 
 
-const userController = require('./../controllers/users.js')
+const usersController = require('./../controllers/users.js')
 
 module.exports = (app) => {
-  app.get('/', userController.test)
-  }
+  app.get('/test', usersController.test)
+
+  app.post('/users', usersController.create)
+  app.post('/sessions', usersController.login)
+  app.delete('/sessions', usersController.logout)
+}
