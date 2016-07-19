@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, './bower_components')))
 require('./server/config/connection.js')
 
 // load router
-
+require('./server/config/routes.js')(app)
 
 
 
