@@ -16,6 +16,11 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, './static')))
 app.use(express.static(path.join(__dirname, './bower_components')))
 
+// load mongoose connector
+require('./server/config/connection.js')
+
+// load router
+
 
 //app.get('/', (req, res) => {res.json({test:'test'})})
 
