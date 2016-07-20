@@ -51,7 +51,7 @@ apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  console.log('token', token)
+  //console.log('token', token)
 
   // decode token
   if (token) {

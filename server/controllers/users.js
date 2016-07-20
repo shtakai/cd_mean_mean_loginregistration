@@ -29,18 +29,28 @@ module.exports = (function() {
 
     create: (req, res) => {
       console.log('UsersController#create')
-      req.body.email = faker.internet.email()
-      req.body.password = 'testtest'
+      //req.body.email = faker.internet.email()
+      //req.body.password = 'testtest'
       console.log('req', req.body)
+      if(!req.body.password){
+        console.log('password is mandatory')
+        res.json({success:false, error:'password is mandatory'})
+        return
+      }else if(req.body.password !== req.body.password_confirm){
+        console.log('passwords not match')
+        res.json({success:false, error:'password not match'})
+        return
+      }
       let user = new User(req.body)
       user.save( (err, _user) => {
         if(err) {
           console.log('error', err)
-          res.json()
+          res.json({success:false, error:'validation error'})
         }else{
           console.log('=----')
+          console.log('userid', _user._id)
           res.json({
-            data: faker.hacker.noun()
+            success: true
           })
         }
       }
@@ -72,12 +82,12 @@ module.exports = (function() {
               console.log('password not match')
               res.json({success:false})
             }else {
-              let token = jwt.sign(user, req.app.get('jwtSecret'),{
+              let token = jwt.sign({_id: user._id, first_name: user.first_name, last_name: user.last_name}, req.app.get('jwtSecret'),{
                 expiresIn: 1440 // expires in 24 hours
               })
               console.log(user)
-              console.log('token', token)
-              console.log('session:user_id:', session.user_id)
+              //console.log('token', token)
+              //console.log('session:user_id:', session.user_id)
               res.json({
                 success: true,
                 user_id: user._id,
