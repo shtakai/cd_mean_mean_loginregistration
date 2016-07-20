@@ -1,0 +1,32 @@
+{
+  "name": "cd_mean_mean_loginregistration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shtakai/cd_mean_mean_loginregistration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shtakai/cd_mean_mean_loginregistration/issues"
+  },
+  "homepage": "https://github.com/shtakai/cd_mean_mean_loginregistration#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "chance": "^1.0.3",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "faker": "^3.1.0",
+    "jsonwebtoken": "^7.1.6",
+    "mongoose": "^4.5.5",
+    "morgan": "^1.7.0"
+  }
+}
