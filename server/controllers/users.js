@@ -57,32 +57,33 @@ module.exports = (function() {
         (err, user) => {
           if(err){
             console.log('err',err)
-            res.json(err)
-            return
+            res.json({success:false, error:err})
           } else if(!user){
             console.log('user not found')
-            res.json({error: 'user not found'})
+            res.json({success:false, error: 'user not found'})
             return
           }
           user.comparePassword(req.body.password,(err, isMatch) => {
             console.log(`err:${err}  isMatch: ${isMatch}`)
-            if(!session.user_id){
-              console.log('set user id')
-              session.user_id = user._id
-            } else {
-               console.log('user_id already set')
+            if(err){
+              console.log('err', err)
+              res.json({success:false, error:err})
+            }else if(!isMatch){
+              console.log('password not match')
+              res.json({success:false})
+            }else {
+              let token = jwt.sign(user, req.app.get('jwtSecret'),{
+                expiresIn: 1440 // expires in 24 hours
+              })
+              console.log(user)
+              console.log('token', token)
+              console.log('session:user_id:', session.user_id)
+              res.json({
+                success: true,
+                user_id: user._id,
+                token: token
+              })
             }
-            let token = jwt.sign(user, req.app.get('jwtSecret'),{
-              expiresIn: 1440 // expires in 24 hours
-            })
-            console.log(user)
-            console.log('token', token)
-            console.log('session:user_id:', session.user_id)
-            res.json({
-              success: true,
-              user_id: user._id,
-              token: token
-            })
           })
 
         }
