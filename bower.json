@@ -21,6 +21,7 @@
     "angular-route": "^1.5.7",
     "angular-messages": "^1.5.7",
     "angular-cookies": "^1.5.7",
-    "chance": "^1.0.3"
+    "chance": "^1.0.3",
+    "angular-jwt": "^0.0.9"
   }
 }
