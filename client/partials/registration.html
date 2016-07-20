@@ -1,0 +1,10 @@
+register
+<h1 ng-bind="c.loggedIn()"></h1>
+
+<div ng-show="!c.loggedIn()">
+  <a href="#/login" class="btn btn-default">login</a>
+</div>
+<div ng-show="c.loggedIn()">
+  <button ng-click="c.logout()">logout</button>
+  <button ng-click="c.dashboard()">dashboard</button>
+</div>

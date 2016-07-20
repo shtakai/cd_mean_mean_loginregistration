@@ -1,4 +1,8 @@
-<h2 ng-init="c.loggedIn()">Login</h2>
+<h1 ng-bind="c.message"></h1>
+<h1 ng-bind="c.isloggedin"></h1>
+<a href="#/login" class="btn">login</a>
+<button ng-click="c.logout()">logout</button>
+<button ng-click="c.dashboard()">dashboard</button>
 
 <div>
   <form ng-submit="c.login()" >
@@ -15,6 +19,41 @@
     </div>
     <div>
       <input type="submit" value="LOGIN">
+    </div>
+  </form>
+
+</div>
+
+<div>
+  <form ng-submit="c.register()" >
+    <div>
+      <p><span ng-bind="c.register_email"></span> /
+      <span ng-bind="c.register_password"></span>
+      <span ng-bind="c.register_password_confirm"></span></p>
+
+    </div>
+    <div>
+      <label for="email" >Email</label>
+      <input type="text" ng-model="c.register_email" id="email" >
+    </div>
+    <div>
+      <label for="first_name" >first name</label>
+      <input type="text" ng-model="c.register_first_name" id="first_name" >
+    </div>
+    <div>
+      <label for="last_name" >LastName</label>
+      <input type="text" ng-model="c.register_last_name" id="last_name" >
+    </div>
+    <div>
+      <label for="password" >Password</label>
+      <input type="password" ng-model="c.register_password" id="password" >
+    </div>
+    <div>
+      <label for="password_confirm" >Password confirmation</label>
+      <input type="password" ng-model="c.register_password_confirm" id="password_confirm" >
+    </div>
+    <div>
+      <input type="submit" value="register">
     </div>
   </form>
 
