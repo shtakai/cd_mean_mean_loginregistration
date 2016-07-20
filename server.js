@@ -2,9 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
 const faker = require('faker')
 const session = require('express-session')
 const secret = process.env.SESS_SECRET || faker.random.uuid()
+const jwt_secret = process.env.JWT_SECRET || faker.random.uuid()
 const cookieParser = require('cookie-parser')
 
 const app = express()
@@ -33,6 +35,7 @@ if (app.get('env') === 'production') {
 }
 
 app.use(session(sess))
+app.set('jwtSecret', jwt_secret)
 
 // load mongoose connector
 require('./server/config/connection.js')

@@ -1,7 +1,13 @@
 console.log('UsersController')
 
+
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
+const morgan = require('morgan')
+
+// used to create, sign, and verify tokens
+const jwt    = require('jsonwebtoken')
+
 
 const faker = require('faker')
 
@@ -66,9 +72,17 @@ module.exports = (function() {
             } else {
                console.log('user_id already set')
             }
+            let token = jwt.sign(user, req.app.get('jwtSecret'),{
+              expiresIn: 1440 // expires in 24 hours
+            })
             console.log(user)
+            console.log('token', token)
             console.log('session:user_id:', session.user_id)
-            res.json({user_id: user._id})
+            res.json({
+              success: true,
+              user_id: user._id,
+              token: token
+            })
           })
 
         }
