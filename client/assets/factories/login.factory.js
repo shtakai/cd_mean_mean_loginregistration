@@ -7,6 +7,11 @@ angular.module('app').factory(
 
     let factory = {}
 
+    factory.loggedIn = (callback) => {
+      console.log('F loggedIn')
+
+    }
+
     factory.login = (email, password, callback) => {
       console.log('F login')
       console.log('email', email, 'password', password)
