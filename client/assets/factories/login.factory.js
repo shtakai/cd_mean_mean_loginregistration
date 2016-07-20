@@ -22,11 +22,7 @@ angular.module('app').factory(
         }
       ).then(data => {
         console.log('response data', data)
-        if(data.data.success){
-          callback(data.data)
-        } else {
-          callback({error: 'login failed'})
-        }
+        callback(data.data)
       })
     }
 
