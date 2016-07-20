@@ -6,13 +6,15 @@
 </head>
 <body ng-app="app">
   <div class="container">
-    <h1 ng-bind="user_id"></h1>
-    <div>
+    <h1 ng-show="user_id" ng-bind="user_id"></h1>
+    <div >
       <a href="#/login">login</a>
       |
       <a href="#/register">register</a>
       |
       <a href="#/dashboard">dashboard</a>
+      |
+      <a href="#/logout">logout</a>
     </div>
     <h2>Login / Register</h2>
     <div class="container" ng-view></div>
@@ -23,6 +25,7 @@
 <script src="angular-route/angular-route.js"></script>
 <script src="angular-messages/angular-messages.js"></script>
 <script src="angular-cookies/angular-cookies.js"></script>
+<script src="angular-jwt/dist/angular-jwt.js"></script>
 <script src="lodash/lodash.js"></script>
 <script src="chance/chance.js"></script>
 <script src="assets/main.js"></script>
