@@ -7,7 +7,7 @@ const usersController = require('./../controllers/users.js')
 
 module.exports = (app) => {
   //usersController.setApp(app)
-  app.get('/test', usersController.test)
+  app.get('/dashboard', usersController.test)
 
   app.post('/users', usersController.create)
   app.post('/sessions', usersController.login)
