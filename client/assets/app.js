@@ -7,7 +7,12 @@ angular.module('app').config(($routeProvider) => {
     .when('/login', {
       templateUrl: '../partials/login.html',
       controller: 'LoginController',
-      controllerAs: 'c'
+      controllerAs: 'c',
+    })
+    .when('/dashboard', {
+      templateUrl: '../partials/dashboard.html',
+      controller: 'LoginController',
+      constollerAs: 'c',
     })
     .otherwise({
       redirectTo: '/'

@@ -49,6 +49,15 @@ module.exports = (function() {
       User.findOne(
         {email: req.body.email},
         (err, user) => {
+          if(err){
+            console.log('err',err)
+            res.json(err)
+            return
+          } else if(!user){
+            console.log('user not found')
+            res.json({error: 'user not found'})
+            return
+          }
           user.comparePassword(req.body.password,(err, isMatch) => {
             console.log(`err:${err}  isMatch: ${isMatch}`)
             if(!session.user_id){
@@ -57,14 +66,14 @@ module.exports = (function() {
             } else {
                console.log('user_id already set')
             }
+            console.log(user)
             console.log('session:user_id:', session.user_id)
+            res.json({user_id: user._id})
           })
 
-          console.log(user)
         }
       )
 
-      res.json({login:'ok'})
 
     }, // end login
     logout: (req, res) => {
